@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { Providers } from "@/components/Providers";
 
 const roboto_mono = Roboto_Mono({ subsets: ["latin"], display: "swap" });
 export const lexend_deca = Lexend_Deca({ subsets: ["latin"], display: "swap" });
@@ -26,11 +27,13 @@ export default function RootLayout({
                "flex flex-col justify-between gap-8 min-h-screen tracking-tight bg-background text-secondary"
             )}
          >
-            <Header />
+            <Providers>
+               <Header />
 
-            <main className="grow flex flex-col">{children}</main>
+               <main className="grow flex flex-col">{children}</main>
 
-            <Footer />
+               <Footer />
+            </Providers>
          </body>
       </html>
    );

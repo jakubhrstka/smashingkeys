@@ -3,7 +3,7 @@ import { GitMerge, Github, Linkedin, Palette } from "lucide-react";
 
 export const Footer = () => {
    return (
-      <footer className="max-w-7xl px-4 py-6 text-sm flex gap-4 justify-between">
+      <footer className="max-w-7xl mx-auto px-4 py-6 text-sm flex gap-4 justify-between">
          <div className="flex gap-4">
             <a
                href="https://github.com/jakubhrstka"

@@ -18,6 +18,29 @@
 
    a:hover,
    .b-link:hover {
-      @apply text-text  transition-colors duration-300;
+      @apply text-text transition-colors duration-300;
+   }
+
+   input {
+      @apply bg-tertiary px-1 py-2 rounded-md text-text;
+   }
+   input:focus-visible {
+      @apply outline outline-2 outline-secondary outline-offset-0;
+   }
+   input::placeholder {
+      @apply text-sm;
+   }
+}
+
+@layer components {
+   .c-btn {
+      @apply text-text font-semibold px-6 py-2 rounded-md;
+   }
+
+   .c-btn--primary {
+      @apply bg-tertiary transition-colors;
+   }
+   .c-btn--primary:hover {
+      @apply bg-text text-tertiary;
    }
 }

@@ -20,6 +20,15 @@ const config: Config = {
             errorVibrant: "var(--color-error-vibrant)",
             errorVibrantAddon: "var(--color-error-vibrant-addon)",
          },
+         keyframes: {
+            pulse: {
+               "0%, 100%": { opacity: "0" },
+               "50%": { opacity: "100%" },
+            },
+         },
+         animation: {
+            pulse: "pulse 1200ms ease-in-out infinite",
+         },
       },
    },
    plugins: [],
