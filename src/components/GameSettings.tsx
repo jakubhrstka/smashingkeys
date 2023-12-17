@@ -1,18 +1,19 @@
 "use client";
 
 import { gameTimeAtom } from "@/lib/atoms";
-import { PREDEFINED_GAMETIMES, TPredefinedGametime, cn } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { useAtom } from "jotai";
 import { Timer, Wrench } from "lucide-react";
 import { Modal } from "./Modal";
 import React, { useRef, useState } from "react";
+import { PREDEFINED_GAMETIMES } from "@/lib/constants";
 
 export const GameSettings = () => {
    const [gameTime, setGameTime] = useAtom(gameTimeAtom);
    const [isModalOpened, setIsModalOpened] = useState<boolean>(false);
    const inputRef = useRef<HTMLInputElement | null>(null);
 
-   const handleTimeClick = (value: TPredefinedGametime) => {
+   const handleTimeClick = (value: number) => {
       if (value !== gameTime) setGameTime(value);
    };
 
@@ -43,9 +44,7 @@ export const GameSettings = () => {
 
                <button
                   className={cn("b-link", {
-                     "text-primary": !PREDEFINED_GAMETIMES.includes(
-                        gameTime as TPredefinedGametime
-                     ),
+                     "text-primary": !PREDEFINED_GAMETIMES.includes(gameTime),
                   })}
                   onClick={() => setIsModalOpened(true)}
                >
@@ -66,11 +65,7 @@ export const GameSettings = () => {
                      placeholder="time in seconds"
                      autoFocus={true}
                      defaultValue={
-                        !PREDEFINED_GAMETIMES.includes(
-                           gameTime as TPredefinedGametime
-                        )
-                           ? gameTime
-                           : ""
+                        !PREDEFINED_GAMETIMES.includes(gameTime) ? gameTime : ""
                      }
                      onKeyDown={(e: React.KeyboardEvent) =>
                         e.code === "Enter" && handleGameTimeModalConfirm()

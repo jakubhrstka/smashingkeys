@@ -1,4 +1,4 @@
-import { lexend_deca } from "@/app/layout";
+import { LEXEND_DECA } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { Crown, Keyboard, Settings, User } from "lucide-react";
 import Link from "next/link";
@@ -10,7 +10,7 @@ export const Header = () => {
             <span
                className={cn(
                   "text-text tracking-normal text-3xl",
-                  lexend_deca.className
+                  LEXEND_DECA.className
                )}
             >
                smashingkeys

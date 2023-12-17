@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
-import { Roboto_Mono, Lexend_Deca } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Providers } from "@/components/Providers";
-
-const roboto_mono = Roboto_Mono({ subsets: ["latin"], display: "swap" });
-export const lexend_deca = Lexend_Deca({ subsets: ["latin"], display: "swap" });
+import { ROBOTO_MONO } from "@/lib/constants";
 
 export const metadata: Metadata = {
    title: "Create Next App",
@@ -23,7 +20,7 @@ export default function RootLayout({
       <html lang="en">
          <body
             className={cn(
-               roboto_mono.className,
+               ROBOTO_MONO.className,
                "flex flex-col justify-between gap-8 min-h-screen tracking-tight bg-background text-secondary"
             )}
          >
