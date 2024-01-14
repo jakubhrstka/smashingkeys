@@ -44,3 +44,13 @@
       @apply bg-text text-tertiary;
    }
 }
+
+@layer utilities {
+   .u-word-underline > *:not(:last-child) {
+      @apply border-b-2 border-text;
+   }
+
+   .u-word-underline--error > *:not(:last-child) {
+      @apply border-primary;
+   }
+}
