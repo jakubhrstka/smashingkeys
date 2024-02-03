@@ -3,54 +3,34 @@
 @tailwind utilities;
 
 @layer base {
-   html {
-      --color-background: #2d394d;
-      --color-primary: #ff7a90;
-      --color-caret: #ff7a90;
-      --color-secondary: #4a768d;
-      --color-tertiary: #263041;
-      --color-text: #fffaf8;
-      --color-error: #ee2a3a;
-      --color-error-addon: #f04040;
-      --color-error-vibrant: #fc2032;
-      --color-error-vibrant-addon: #f04040;
-   }
+  html {
+    --color-background: #2d394d;
+    --color-primary: #ff7a90;
+    --color-caret: #ff7a90;
+    --color-secondary: #4a768d;
+    --color-tertiary: #263041;
+    --color-text: #fffaf8;
+    --color-error: #ee2a3a;
+    --color-error-addon: #f04040;
+    --color-error-vibrant: #fc2032;
+    --color-error-vibrant-addon: #f04040;
+  }
 
-   a:hover,
-   .b-link:hover {
-      @apply text-text transition-colors duration-300;
-   }
+  *:focus-visible {
+    @apply outline-offset-4 outline-primary;
+  }
 
-   input {
-      @apply bg-tertiary px-1 py-2 rounded-md text-text;
-   }
-   input:focus-visible {
-      @apply outline outline-2 outline-secondary outline-offset-0;
-   }
-   input::placeholder {
-      @apply text-sm;
-   }
-}
+  a:hover {
+    @apply text-text transition-colors duration-300;
+  }
 
-@layer components {
-   .c-btn {
-      @apply text-text font-semibold px-6 py-2 rounded-md;
-   }
-
-   .c-btn--primary {
-      @apply bg-tertiary transition-colors;
-   }
-   .c-btn--primary:hover {
-      @apply bg-text text-tertiary;
-   }
-}
-
-@layer utilities {
-   .u-word-underline > *:not(:last-child) {
-      @apply border-b-2 border-text;
-   }
-
-   .u-word-underline--error > *:not(:last-child) {
-      @apply border-primary;
-   }
+  input {
+    @apply bg-tertiary px-1 py-2 rounded-md text-text;
+  }
+  input:focus-visible {
+    @apply outline outline-2 outline-secondary outline-offset-0;
+  }
+  input::placeholder {
+    @apply text-sm;
+  }
 }
