@@ -5,3 +5,6 @@ export const LEXEND_DECA = Lexend_Deca({ subsets: ["latin"], display: "swap" });
 
 export const PREDEFINED_GAMETIMES: number[] = [15, 30, 60, 120];
 export const DEFAULT_PREDEFINED_GAMETIME: number = 15;
+
+export const CURSOR_ELEMENT_HEIGHT: number = 28;
+export const LAST_DISPLAYED_WORD_INDEX_SAFE_AREA: number = 10;

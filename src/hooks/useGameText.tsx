@@ -2,14 +2,17 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
-type TGameTextChar = {
+export interface GameTextChar {
   char: string;
   isTyped: boolean;
   isCorrect: boolean;
-};
+}
 
+/**
+ * Hook that handles fetching and setting up text for the game
+ */
 export const useGameText = () => {
-  const [gameText, setGameText] = useState<TGameTextChar[][] | null>(null);
+  const [gameText, setGameText] = useState<GameTextChar[][] | null>(null);
   const queryClient = useQueryClient();
 
   const gameTextQuery = useQuery({
@@ -29,7 +32,7 @@ export const useGameText = () => {
   useEffect(() => {
     if (gameTextQuery.data) {
       const randomWordsArray = gameTextQuery.data.split(" ");
-      const enhancedRandomTextArray: TGameTextChar[][] = randomWordsArray.map(
+      const enhancedRandomTextArray: GameTextChar[][] = randomWordsArray.map(
         (word) => {
           return word
             .split("")
@@ -50,6 +53,6 @@ export const useGameText = () => {
     gameText,
     setGameText,
     getNewGameText: fetchNewGameText,
-    isGameTextLoading: gameTextQuery.isLoading,
+    isGameTextFetching: gameTextQuery.isFetching,
   };
 };

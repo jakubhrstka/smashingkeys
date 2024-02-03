@@ -1,5 +1,5 @@
+import { GameArea } from "@/components/GameArea";
 import { GameSettings } from "@/components/GameSettings";
-import { Typearea } from "@/components/Typearea";
 import { Globe2, RotateCcw } from "lucide-react";
 
 export default function Home() {
@@ -13,7 +13,7 @@ export default function Home() {
           english
         </div>
 
-        <Typearea />
+        <GameArea />
 
         {/* <button className="b-link">
                <RotateCcw size={24} className="mt-4" />
