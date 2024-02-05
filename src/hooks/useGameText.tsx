@@ -1,3 +1,4 @@
+import { getSentencesApiUrl } from "@/lib/api/sentences";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
@@ -17,11 +18,11 @@ export const useGameText = () => {
 
   const gameTextQuery = useQuery({
     queryKey: ["gameText"],
-    queryFn: async () => {
-      const result = await fetch("http://metaphorpsum.com/sentences/10");
-      const data = await result.text();
+    queryFn: async (): Promise<string> => {
+      const result = await fetch(getSentencesApiUrl());
+      const data = await result.json();
 
-      return data;
+      return data[0];
     },
   });
 
