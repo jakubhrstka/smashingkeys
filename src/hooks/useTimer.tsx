@@ -1,5 +1,5 @@
 import { useGameStore } from "@/lib/stores/gameStore";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export interface GameTimer {
   timeToDisplay: number;
@@ -24,6 +24,7 @@ export const useTimer = (): GameTimer => {
 
   const startTimer = () => {
     setIsGameInProgress(true);
+    currentTime = gameTime;
 
     let timer = accurateTimer(() => {
       currentTime--;
@@ -59,14 +60,13 @@ export const useTimer = (): GameTimer => {
     return { cancel };
   };
 
-  const resetTimer = () => {
-    currentTime = gameTime;
+  const resetTimer = useCallback(() => {
     setTimeToDisplay(gameTime);
-  };
+  }, [gameTime]);
 
   useEffect(() => {
     resetTimer();
-  }, [gameTime]);
+  }, [gameTime, resetTimer]);
 
   return {
     timeToDisplay,

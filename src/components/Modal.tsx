@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 
 export const Modal = ({
   children,
@@ -16,9 +16,12 @@ export const Modal = ({
     if (backdropRef.current === e.target) onClose();
   };
 
-  const handleKeyPress = (e: KeyboardEvent) => {
-    if (e.code === "Escape") onClose();
-  };
+  const handleKeyPress = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.code === "Escape") onClose();
+    },
+    [onClose]
+  );
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyPress);
@@ -26,7 +29,7 @@ export const Modal = ({
     return () => {
       document.removeEventListener("keydown", handleKeyPress);
     };
-  }, []);
+  }, [handleKeyPress]);
 
   return (
     <div
