@@ -10,6 +10,7 @@ import React, { useEffect, useRef } from "react";
 import { Result } from "./Result";
 import { CURSOR_ELEMENT_HEIGHT } from "@/lib/constants";
 import { User } from "next-auth";
+import { Loader } from "./Loader";
 
 interface GameAreaProps {
   user?: User;
@@ -42,12 +43,7 @@ export const GameArea = ({ user }: GameAreaProps) => {
     setIsGameEnded(false);
   };
 
-  if (!gameText || isGameTextFetching)
-    return (
-      <div className="animate-spin">
-        <Loader2 size={32} />
-      </div>
-    );
+  if (!gameText || isGameTextFetching) return <Loader size={32} />;
 
   if (isGameEnded)
     return <Result gameText={gameText} onClose={resetGame} user={user} />;

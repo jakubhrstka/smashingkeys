@@ -44,8 +44,6 @@ export const useGameText = () => {
         }
       );
 
-      toast.success("Your game text is ready!");
-
       setGameText(enhancedRandomTextArray);
     }
   }, [gameTextQuery.data]);

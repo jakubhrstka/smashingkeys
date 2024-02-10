@@ -8,6 +8,11 @@ export async function getUserResults(userId: string): Promise<Result[] | null> {
       where: {
         authorId: userId,
       },
+      orderBy: [
+        {
+          createdAt: "desc",
+        },
+      ],
     });
 
     return data;
@@ -23,6 +28,11 @@ export async function getLeaderboardResults(): Promise<
     by: ["authorId"],
     _max: {
       wpm: true,
+    },
+    orderBy: {
+      _max: {
+        wpm: "desc",
+      },
     },
   });
 

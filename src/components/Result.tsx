@@ -7,6 +7,11 @@ import { useGameStore } from "@/lib/stores/gameStore";
 import { useState } from "react";
 import { Tooltip } from "react-tooltip";
 import { User } from "next-auth";
+import { useMutation } from "@tanstack/react-query";
+import { SaveResultPayload } from "@/lib/validators/result";
+import axios, { AxiosError } from "axios";
+import { toast } from "sonner";
+import { Loader } from "./Loader";
 
 interface ResultProps {
   gameText: GameTextChar[][];
@@ -19,6 +24,35 @@ export const Result = ({ gameText, onClose, user }: ResultProps) => {
   const [result] = useState(
     getResult(JSON.parse(JSON.stringify(gameText)), gameTime)
   );
+
+  const { mutate: saveResult, isPending } = useMutation({
+    mutationFn: async () => {
+      const payload: SaveResultPayload = {
+        ...result,
+      };
+
+      const { data } = await axios.post("/api/results", payload);
+      return data as string;
+    },
+    onError: (err) => {
+      if (err instanceof AxiosError) {
+        if (err.response?.status === 422)
+          return toast.error("Could not save the result. Data are invalid.");
+
+        if (err.response?.status === 401)
+          return toast.error("You have to be signed in to save results.");
+      }
+
+      return toast.error(
+        "Error occured while trying to save the result. Please try again."
+      );
+    },
+    onSuccess: () => {
+      toast.success("Your result was successfully saved!");
+
+      onClose();
+    },
+  });
 
   return (
     <div className="fixed left-4 right-4 top-[50vh] -translate-y-[50%] flex justify-center items-center">
@@ -52,7 +86,10 @@ export const Result = ({ gameText, onClose, user }: ResultProps) => {
               Save
             </Button>
           ) : (
-            <Button variant="primary">Save</Button>
+            <Button variant="primary" onClick={() => saveResult()}>
+              {isPending && <Loader />}
+              Save
+            </Button>
           )}
           <Button variant="primary" onClick={onClose}>
             Close

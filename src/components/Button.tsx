@@ -6,7 +6,8 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const getClassNames = (variant: string): string => {
-  const defaultClassNames = "text-text font-semibold px-6 py-2 rounded-md";
+  const defaultClassNames =
+    "flex items-center gap-2 text-text font-semibold px-6 py-2 rounded-md";
 
   switch (variant) {
     case "primary":
