@@ -22,7 +22,10 @@ interface ResultProps {
 export const Result = ({ gameText, onClose, user }: ResultProps) => {
   const { gameTime } = useGameStore();
   const [result] = useState(
-    getResult(JSON.parse(JSON.stringify(gameText)), gameTime)
+    getResult(
+      gameText.map((arr) => arr.slice()),
+      gameTime
+    )
   );
 
   const { mutate: saveResult, isPending } = useMutation({
