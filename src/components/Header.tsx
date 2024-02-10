@@ -17,19 +17,29 @@ export const Header = async () => {
             "text-text tracking-normal text-3xl",
             LEXEND_DECA.className
           )}
+          aria-label="Go to homepage"
         >
           smashingkeys
         </Link>
       </div>
       <div className="flex items-center grow justify-between gap-6">
         <div className="flex items-center gap-8">
-          <Link href="/leaderboard" className="b-link" prefetch={false}>
+          <Link
+            href="/leaderboard"
+            className="b-link"
+            prefetch={false}
+            aria-label="Go to leaderboard page"
+          >
             <Crown />
           </Link>
         </div>
 
         {authSession?.user ? (
-          <Link href="/profile" className="b-link">
+          <Link
+            href="/profile"
+            className="b-link"
+            aria-label="Go to user profile page"
+          >
             <User />
           </Link>
         ) : (

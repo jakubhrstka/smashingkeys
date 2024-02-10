@@ -14,6 +14,11 @@ export const getClassNames = (variant: string): string => {
         defaultClassNames,
         "bg-tertiary transition-colors hover:bg-text hover:text-tertiary"
       );
+    case "disabled":
+      return cn(
+        defaultClassNames,
+        "bg-background text-secondary cursor-not-allowed"
+      );
 
     default:
       return defaultClassNames;
@@ -24,10 +29,14 @@ export const Button = ({
   variant = "primary",
   children,
   className,
+  disabled,
   ...props
 }: ButtonProps) => {
   return (
-    <button className={cn(className, getClassNames(variant))} {...props}>
+    <button
+      className={cn(className, getClassNames(disabled ? "disabled" : variant))}
+      {...props}
+    >
       {children}
     </button>
   );

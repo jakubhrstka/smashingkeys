@@ -9,8 +9,13 @@ import { Loader2, RotateCcw } from "lucide-react";
 import React, { useEffect, useRef } from "react";
 import { Result } from "./Result";
 import { CURSOR_ELEMENT_HEIGHT } from "@/lib/constants";
+import { User } from "next-auth";
 
-export const GameArea = () => {
+interface GameAreaProps {
+  user?: User;
+}
+
+export const GameArea = ({ user }: GameAreaProps) => {
   const { isFocused, setIsFocused, isGameEnded, setIsGameEnded } =
     useGameStore();
   const { gameText, setGameText, isGameTextFetching, getNewGameText } =
@@ -44,7 +49,8 @@ export const GameArea = () => {
       </div>
     );
 
-  if (isGameEnded) return <Result timer={timer} onClose={resetGame} />;
+  if (isGameEnded)
+    return <Result gameText={gameText} onClose={resetGame} user={user} />;
 
   return (
     <>

@@ -1,8 +1,11 @@
 import { GameArea } from "@/components/GameArea";
 import { GameSettings } from "@/components/GameSettings";
+import { getAuthSession } from "@/lib/auth";
 import { Globe2, RotateCcw } from "lucide-react";
 
-export default function Home() {
+export default async function HomePage() {
+  const session = await getAuthSession();
+
   return (
     <div className="grow w-full max-w-7xl mx-auto px-4 flex flex-col">
       <GameSettings />
@@ -13,11 +16,7 @@ export default function Home() {
           english
         </div>
 
-        <GameArea />
-
-        {/* <button className="b-link">
-               <RotateCcw size={24} className="mt-4" />
-            </button> */}
+        <GameArea user={session?.user} />
       </div>
     </div>
   );

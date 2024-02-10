@@ -48,7 +48,7 @@ export const GameSettings = () => {
             })}
             onClick={() => setIsModalOpened(true)}
           >
-            <Wrench size={16} />
+            <Wrench size={16} aria-label="Open to set custom time" />
           </button>
         </div>
       </div>

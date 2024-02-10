@@ -1,5 +1,6 @@
 import { getSentencesApiUrl } from "@/lib/api/sentences";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
@@ -19,10 +20,9 @@ export const useGameText = () => {
   const gameTextQuery = useQuery({
     queryKey: ["gameText"],
     queryFn: async (): Promise<string> => {
-      const result = await fetch(getSentencesApiUrl());
-      const data = await result.json();
+      const result = await axios.get(getSentencesApiUrl());
 
-      return data[0];
+      return result.data[0];
     },
   });
 
