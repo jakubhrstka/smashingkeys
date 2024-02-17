@@ -1,7 +1,11 @@
 import packagejson from "../../package.json";
 import { GitMerge, Github, Linkedin, Palette } from "lucide-react";
+import { ThemeSelect } from "./ThemeSelect";
+import { getAuthSession } from "@/lib/auth";
 
-export const Footer = () => {
+export const Footer = async () => {
+  const session = await getAuthSession();
+
   return (
     <footer className="max-w-7xl w-full mx-auto px-4 py-6 text-sm flex gap-4 justify-between mt-8">
       <div className="flex gap-4">
@@ -26,10 +30,7 @@ export const Footer = () => {
       </div>
       <div>portfolio purposes only</div>
       <div className="flex gap-4">
-        <div className="flex gap-2">
-          <Palette size={20} />
-          bento
-        </div>
+        <ThemeSelect isSignedIn={!!session?.user} />
         <div className="flex gap-2">
           <GitMerge size={20} />v{packagejson.version}
         </div>

@@ -1,3 +1,6 @@
+export const dynamic = "force-dynamic";
+export const revalidate = 30;
+
 import { ResultTable } from "@/components/ResultTable";
 import { getAuthSession } from "@/lib/auth";
 import { getUserResults } from "@/lib/data";
@@ -27,7 +30,7 @@ export default async function ProfilePage() {
         <div>{authSession.user.email}</div>
       </div>
       <h1 className="text-3xl">Saved results</h1>
-      {userResults && userResults.length ? (
+      {userResults && !!userResults.length ? (
         <ResultTable results={userResults} />
       ) : (
         <div>{"You haven't saved any results yet."}</div>

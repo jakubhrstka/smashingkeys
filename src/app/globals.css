@@ -3,13 +3,26 @@
 @tailwind utilities;
 
 @layer base {
-  html {
+  html[data-theme="theme-bento"] {
     --color-background: #2d394d;
     --color-primary: #ff7a90;
     --color-caret: #ff7a90;
     --color-secondary: #4a768d;
     --color-tertiary: #263041;
     --color-text: #fffaf8;
+    --color-error: #ee2a3a;
+    --color-error-addon: #f04040;
+    --color-error-vibrant: #fc2032;
+    --color-error-vibrant-addon: #f04040;
+  }
+
+  html[data-theme="theme-emerald"] {
+    --color-background: #f5f5f5;
+    --color-primary: #00d688;
+    --color-caret: #00d688;
+    --color-secondary: #6b7280;
+    --color-tertiary: #ffffff;
+    --color-text: #0a0a0a;
     --color-error: #ee2a3a;
     --color-error-addon: #f04040;
     --color-error-vibrant: #fc2032;

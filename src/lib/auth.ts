@@ -20,7 +20,7 @@ export const authOptions: NextAuthOptions = {
       const dbUser = await db.user.findFirst({ where: { email: token.email } });
 
       if (!dbUser) {
-        token.id = user.id;
+        if (user) token.id = user.id;
         return token;
       }
 
@@ -29,12 +29,14 @@ export const authOptions: NextAuthOptions = {
         name: dbUser.name,
         email: dbUser.email,
         picture: dbUser.image,
+        preferedThemeName: dbUser.preferedThemeName,
       };
     },
     async session({ token, session }) {
       if (token) {
         session.user.id = token.id;
         session.user.image = token.picture;
+        session.user.preferedThemeName = token.preferedThemeName;
       }
 
       return session;

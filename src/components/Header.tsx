@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { Crown, User } from "lucide-react";
 import Link from "next/link";
 import { SignInButton } from "./SignInButton";
+import { SignOutButton } from "./SignOutButton";
 
 export const Header = async () => {
   const authSession = await getAuthSession();
@@ -35,13 +36,16 @@ export const Header = async () => {
         </div>
 
         {authSession?.user ? (
-          <Link
-            href="/profile"
-            className="b-link"
-            aria-label="Go to user profile page"
-          >
-            <User />
-          </Link>
+          <div className="flex items-center gap-8">
+            <Link
+              href="/profile"
+              className="b-link"
+              aria-label="Go to user profile page"
+            >
+              <User />
+            </Link>
+            <SignOutButton />
+          </div>
         ) : (
           <SignInButton />
         )}
