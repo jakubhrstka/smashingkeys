@@ -4,7 +4,7 @@ import { useGameText } from "@/hooks/useGameText";
 import { useTextTyping } from "@/hooks/useTextTyping";
 import { useTimer } from "@/hooks/useTimer";
 import { useGameStore } from "@/lib/stores/gameStore";
-import { cn } from "@/lib/utils";
+import { cn, isMobile } from "@/lib/utils";
 import { Loader2, RotateCcw } from "lucide-react";
 import React, { useEffect, useRef } from "react";
 import { Result } from "./Result";
@@ -86,8 +86,16 @@ export const GameArea = ({ user }: GameAreaProps) => {
           />
 
           {!isFocused && (
-            <div className="absolute inset-0 flex justify-center items-center text-primary">
-              Click here to focus
+            <div className="absolute inset-0 flex justify-center items-center text-center text-primary">
+              {isMobile() ? (
+                <span>
+                  Smashingkeys app is designed to be used with keyboard. Switch
+                  to device with dedicated keyboard to have the best experience.
+                  Tap here to gain focus if you still want to continue.
+                </span>
+              ) : (
+                <span>Click here to focus</span>
+              )}
             </div>
           )}
 

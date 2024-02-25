@@ -7,8 +7,8 @@ export const Footer = async () => {
   const session = await getAuthSession();
 
   return (
-    <footer className="max-w-7xl w-full mx-auto px-4 py-6 text-sm flex gap-4 justify-between mt-8">
-      <div className="flex gap-4">
+    <footer className="max-w-7xl w-full mx-auto px-4 py-6 text-sm flex flex-wrap gap-4 justify-center sm:justify-between mt-8">
+      <div className="flex gap-4 order-1">
         <a
           href="https://github.com/jakubhrstka"
           target="_blank"
@@ -28,8 +28,10 @@ export const Footer = async () => {
           Linkedin
         </a>
       </div>
-      <div>portfolio purposes only</div>
-      <div className="flex gap-4">
+      <div className="order-2 w-full text-center sm:order-1 sm:w-auto">
+        portfolio purposes only
+      </div>
+      <div className="flex gap-4 order-1">
         <ThemeSelect isSignedIn={!!session?.user} />
         <div className="flex gap-2">
           <GitMerge size={20} />v{packagejson.version}
