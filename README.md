@@ -1,6 +1,6 @@
 ![screenshot](https://github.com/jakubhrstka/smashingkeys/assets/55590543/61aa826b-5698-4f8f-85fe-6e64461d230b)
 
-# smashingkeys - a monkeytype.com clone app
+# [smashingkeys](https://smashingkeys.vercel.app/) - a monkeytype.com clone app
 
 Some sort of clone of Monkeytype typing test app. It features timer with predefined times and ability to set custom time, result summary after the test ends in simple and easy to read format, option to save the result, choose from multiple custom color themes, smooth visualization and realtime feedback on caret, typos and progress in general.
 
@@ -14,6 +14,8 @@ Some sort of clone of Monkeytype typing test app. It features timer with predefi
 - Leaderboard of all users and their saved test results
 - Custom color themes saved to user preferences (for signed in users) or local storage
 - Mobile responsiveness (recommended to use with dedicated keyboard)
+
+[Live preview](https://smashingkeys.vercel.app/)
 
 ## How it works
 
@@ -32,7 +34,7 @@ Components are styled with tailwind and application is written in typescript for
 
 ## Things to improve
 
-- Create prettier and eslint configs at the beginning of the project in case some other person joins in (only local vscode prettier config is used at the moment)
 - Testing - component testing using react testing library, e2e testing using cypress or playwright
 - Option to save test results even if user isn't signed in yet (store result in local storage, user signs in and save the stored result afterwards)
+- Create prettier and eslint configs at the beginning of the project in case some other person joins in (only local vscode prettier config is used at the moment)
 - More color themes + nice to have: live previews on hover
