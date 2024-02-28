@@ -35,6 +35,7 @@ Components are styled with tailwind and application is written in typescript for
 ## Things to improve
 
 - Testing - component testing using react testing library, e2e testing using cypress or playwright
+- Create DTO objects for data from database to have more control over what kind of data is passed to frontend and to prevent any sensitive information leaks when extending the aplication in the future
 - Option to save test results even if user isn't signed in yet (store result in local storage, user signs in and save the stored result afterwards)
 - Create prettier and eslint configs at the beginning of the project in case some other person joins in (only local vscode prettier config is used at the moment)
 - More color themes + nice to have: live previews on hover
