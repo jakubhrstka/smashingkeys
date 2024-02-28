@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![screenshot](https://github.com/jakubhrstka/smashingkeys/assets/55590543/61aa826b-5698-4f8f-85fe-6e64461d230b)
 
-## Getting Started
+# smashingkeys - a monkeytype.com clone app
 
-First, run the development server:
+Some sort of clone of Monkeytype typing test app. It features timer with predefined times and ability to set custom time, result summary after the test ends in simple and easy to read format, option to save the result, choose from multiple custom color themes, smooth visualization and realtime feedback on caret, typos and progress in general.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Realtime feedback
+- Custom timer
+- Smooth and eye pleasing visualization of caret position, typos and progress in test
+- Authentication through GitHub
+- User profile with saved test results
+- Leaderboard of all users and their saved test results
+- Custom color themes saved to user preferences (for signed in users) or local storage
+- Mobile responsiveness (recommended to use with dedicated keyboard)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## How it works
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Core stack: Typescript + Next.js + TailwindCSS + Prisma + PostgresDB  
+Hosted on Vercel
 
-## Learn More
+--
 
-To learn more about Next.js, take a look at the following resources:
+Test text is fetched from hipsum.co api and happens on load and while resetting the aplication (retry or new test run). After test is finished a result page is shown with correct typed words calculated per minute (if the test is run with different timer than 60 seconds) and accuracy (number of errors / number of correctly typed characters).
+User can sign with his GitHub account (NextAuth is used for handling authentication) and save test result after the attempt.
+List of saved results is displayed on profile page. List of best results is displayed on leaderboard page (one per user and only name and profile image are used from the user's data to not leak any sensitive information like email).
+Timer can be set with predefined times or set your own by clicking on wrench icon.
+User can choose from 2 color themes (bento for dark-ish mode and emerald for light mode). Chosen color theme is saved to user preferences for signed in users (DB, JWT token) or local storage for anonymous users.
+UI is inspired by monkeytype application and bento color scheme aswell.
+Component are styled with tailwind and application is written in typescript for type safety.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Things to improve
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Create prettier and eslint configs at the beginning of the project in case some other person joins in (Only local vscode prettier config is used at the moment)
+- Testing - component testing using react testing library, e2e test using cypress or playwright
+- Option to save test result even if user isn't signed in at the moment (store result in local storage, sign in user and save the stored result afterwards)
+- More color themes + nice to have: live previews on hover
